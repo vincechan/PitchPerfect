@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A93CEB6E1B16EA90007B6322 /* RecordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93CEB6D1B16EA90007B6322 /* RecordState.swift */; };
 		A9E0E8B71B09A82400B7AE0C /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0E8B61B09A82400B7AE0C /* RecordedAudio.swift */; };
 		A9EC53611B05A72800A02D33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EC53601B05A72800A02D33 /* AppDelegate.swift */; };
 		A9EC53631B05A72800A02D33 /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EC53621B05A72800A02D33 /* RecordSoundsViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A93CEB6D1B16EA90007B6322 /* RecordState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordState.swift; sourceTree = "<group>"; };
 		A9E0E8B61B09A82400B7AE0C /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 		A9EC535B1B05A72800A02D33 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9EC535F1B05A72800A02D33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				A9EC53691B05A72800A02D33 /* LaunchScreen.xib */,
 				A9EC535E1B05A72800A02D33 /* Supporting Files */,
 				A9E0E8B61B09A82400B7AE0C /* RecordedAudio.swift */,
+				A93CEB6D1B16EA90007B6322 /* RecordState.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				A9E0E8B71B09A82400B7AE0C /* RecordedAudio.swift in Sources */,
 				A9EC53631B05A72800A02D33 /* RecordSoundsViewController.swift in Sources */,
+				A93CEB6E1B16EA90007B6322 /* RecordState.swift in Sources */,
 				A9EC53811B062F8000A02D33 /* PlaySoundsViewController.swift in Sources */,
 				A9EC53611B05A72800A02D33 /* AppDelegate.swift in Sources */,
 			);

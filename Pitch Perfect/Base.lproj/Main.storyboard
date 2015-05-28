@@ -30,14 +30,30 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eld-uo-RMl">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFH-cJ-etK">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SzS-yq-AGT"/>
+                                    <constraint firstAttribute="width" constant="50" id="UoN-9X-gE6"/>
+                                </constraints>
                                 <state key="normal" image="stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SzS-yq-AGT"/>
+                                        <exclude reference="UoN-9X-gE6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="SzS-yq-AGT"/>
+                                        <include reference="UoN-9X-gE6"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="stopRecording:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1AF-0O-bBG"/>
                                 </connections>
@@ -45,8 +61,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vFH-cJ-etK" secondAttribute="bottom" constant="20" id="2jl-3i-Pmj"/>
-                            <constraint firstAttribute="centerX" secondItem="vFH-cJ-etK" secondAttribute="centerX" constant="-2" id="Axd-Xz-21Q"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vFH-cJ-etK" secondAttribute="bottom" constant="20" id="4C6-L3-GVb"/>
+                            <constraint firstAttribute="centerX" secondItem="vFH-cJ-etK" secondAttribute="centerX" id="CpG-lS-iRQ"/>
                             <constraint firstAttribute="centerX" secondItem="eld-uo-RMl" secondAttribute="centerX" constant="-0.5" id="GmP-dm-YDi"/>
                             <constraint firstAttribute="centerX" secondItem="Qtt-xh-iAf" secondAttribute="centerX" id="OCK-2a-CF6"/>
                             <constraint firstAttribute="centerY" secondItem="Qtt-xh-iAf" secondAttribute="centerY" id="eUj-om-nGm"/>
@@ -59,12 +75,12 @@
                                 <exclude reference="vFH-cJ-etK"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2jl-3i-Pmj"/>
+                                <exclude reference="4C6-L3-GVb"/>
                                 <exclude reference="GmP-dm-YDi"/>
                                 <exclude reference="hGm-bW-KqL"/>
                                 <exclude reference="OCK-2a-CF6"/>
                                 <exclude reference="eUj-om-nGm"/>
-                                <exclude reference="Axd-Xz-21Q"/>
+                                <exclude reference="CpG-lS-iRQ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -74,19 +90,19 @@
                                 <include reference="vFH-cJ-etK"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2jl-3i-Pmj"/>
+                                <include reference="4C6-L3-GVb"/>
                                 <include reference="GmP-dm-YDi"/>
                                 <include reference="hGm-bW-KqL"/>
                                 <include reference="OCK-2a-CF6"/>
                                 <include reference="eUj-om-nGm"/>
-                                <include reference="Axd-Xz-21Q"/>
+                                <include reference="CpG-lS-iRQ"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="0h7-Ir-58U"/>
                     <connections>
                         <outlet property="recordButton" destination="Qtt-xh-iAf" id="3Uf-hL-84L"/>
-                        <outlet property="recordingInProgress" destination="eld-uo-RMl" id="aST-Xx-3lj"/>
+                        <outlet property="statusLabel" destination="eld-uo-RMl" id="7ib-gd-aDb"/>
                         <outlet property="stopButton" destination="vFH-cJ-etK" id="feC-ca-qFq"/>
                         <segue destination="BRX-FM-AI3" kind="show" identifier="stopRecording" id="FtD-Kq-gwv"/>
                     </connections>
@@ -199,20 +215,20 @@
                                 <exclude reference="lG5-8w-0CR"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="mhg-2y-ETY"/>
-                                <exclude reference="vZq-Kw-Kfg"/>
+                                <exclude reference="oqr-9a-CJ5"/>
                                 <exclude reference="Erv-Xq-ryX"/>
                                 <exclude reference="NNl-xQ-9iK"/>
                                 <exclude reference="46e-lx-Jha"/>
                                 <exclude reference="v7j-Fz-Vea"/>
+                                <exclude reference="mhg-2y-ETY"/>
+                                <exclude reference="vZq-Kw-Kfg"/>
                                 <exclude reference="8DR-yl-llv"/>
                                 <exclude reference="ewU-pZ-1iD"/>
-                                <exclude reference="gq3-xE-Bcz"/>
-                                <exclude reference="pCd-Ck-FmF"/>
                                 <exclude reference="aWG-iC-uHV"/>
                                 <exclude reference="dKg-NE-aVJ"/>
                                 <exclude reference="AKp-3A-dpl"/>
-                                <exclude reference="oqr-9a-CJ5"/>
+                                <exclude reference="gq3-xE-Bcz"/>
+                                <exclude reference="pCd-Ck-FmF"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -226,20 +242,20 @@
                                 <include reference="lG5-8w-0CR"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="mhg-2y-ETY"/>
-                                <include reference="vZq-Kw-Kfg"/>
+                                <include reference="oqr-9a-CJ5"/>
                                 <include reference="Erv-Xq-ryX"/>
                                 <include reference="NNl-xQ-9iK"/>
                                 <include reference="46e-lx-Jha"/>
                                 <include reference="v7j-Fz-Vea"/>
+                                <include reference="mhg-2y-ETY"/>
+                                <include reference="vZq-Kw-Kfg"/>
                                 <include reference="8DR-yl-llv"/>
                                 <include reference="ewU-pZ-1iD"/>
-                                <include reference="gq3-xE-Bcz"/>
-                                <include reference="pCd-Ck-FmF"/>
                                 <include reference="aWG-iC-uHV"/>
                                 <include reference="dKg-NE-aVJ"/>
                                 <include reference="AKp-3A-dpl"/>
-                                <include reference="oqr-9a-CJ5"/>
+                                <include reference="gq3-xE-Bcz"/>
+                                <include reference="pCd-Ck-FmF"/>
                             </mask>
                         </variation>
                     </view>

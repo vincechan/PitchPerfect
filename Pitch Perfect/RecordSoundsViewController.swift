@@ -9,34 +9,49 @@
 import UIKit
 import AVFoundation
 
+
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
-    @IBOutlet weak var recordingInProgress: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
+    var currentState:RecorderState = RecorderState.Stop
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
+        currentState = RecorderState.Stop
+        
         stopButton.hidden = true
-        recordButton.enabled = true
-        recordingInProgress.text = "Tap to Record"
+        statusLabel.text = "Tap to Record"
     }
-    
-    
+
     @IBAction func stopRecording(sender: UIButton) {
         audioRecorder.stop()
     }
     
     @IBAction func recordAudio(sender: UIButton) {
         stopButton.hidden = false
-        recordButton.enabled = false
-        recordingInProgress.text = "recording in progress"
+        
+        switch (currentState) {
+        case RecorderState.Stop:
+            record()
+        case RecorderState.Record:
+            pause()
+        case RecorderState.Pause:
+           resume()
+        }
+    }
+    
+    func record() {
+        currentState = RecorderState.Record
+        statusLabel.text = "Recording. Tap to Pause"
+        stopButton.hidden = false
         
         // Determine file path
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
@@ -56,6 +71,22 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
+        audioRecorder.record()
+    }
+    
+    func pause() {
+        currentState = RecorderState.Pause
+        statusLabel.text = "Pause. Tap to Resume"
+        stopButton.hidden = false
+        
+        audioRecorder.pause()
+    }
+    
+    func resume() {
+        currentState = RecorderState.Record
+        statusLabel.text = "Recording. Tap to Pause"
+        stopButton.hidden = false
+        
         audioRecorder.record()
     }
 
