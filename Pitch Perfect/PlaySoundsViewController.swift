@@ -20,12 +20,12 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true
         
         audioEngine = AVAudioEngine()
         
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        audioFile = try? AVAudioFile(forReading: receivedAudio.filePathUrl)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,14 +49,14 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playReverbAudio(sender: AnyObject) {
-        var reverbEffect = AVAudioUnitReverb()
+        let reverbEffect = AVAudioUnitReverb()
         reverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.LargeRoom)
         reverbEffect.wetDryMix = 80
         playAudioWithEffect(reverbEffect)
     }
     
     @IBAction func playEchoAudio(sender: AnyObject) {
-        var delayEffect = AVAudioUnitDelay()
+        let delayEffect = AVAudioUnitDelay()
         delayEffect.delayTime = 0.5
         playAudioWithEffect(delayEffect)
     }
@@ -84,7 +84,7 @@ class PlaySoundsViewController: UIViewController {
     
     
     func playAudioWithVariablePitch(pitch: Float) {
-        var pitchEffect = AVAudioUnitTimePitch()
+        let pitchEffect = AVAudioUnitTimePitch()
         pitchEffect.pitch = pitch
         
         playAudioWithEffect(pitchEffect)
@@ -93,7 +93,7 @@ class PlaySoundsViewController: UIViewController {
     func playAudioWithEffect(effect: AVAudioNode) {
         stopPlaying(self)
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(effect)
         
@@ -101,7 +101,10 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.connect(effect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.start()
+        } catch _ {
+        }
         
         audioPlayerNode.play()
         
